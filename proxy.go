@@ -763,6 +763,9 @@ func (sv *serverConn) Close() error {
 		debug.Printf("close connection to %s remains %d concurrent connections\n",
 			sv.hostPort, decSrvConnCnt(sv.hostPort))
 	}
+	if sv.Conn == nil {
+		return nil
+	}
 	return sv.Conn.Close()
 }
 
